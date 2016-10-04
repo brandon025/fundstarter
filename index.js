@@ -9,9 +9,10 @@ app.set('port', (process.env.PORT || 8080))
 
 app.get('/', function(request, response) {
     // response.sendFile('public/index.html',{root:__dirname})
-        response.set('content-type','text/html');
-        response.send(fs.readFileSync('public/index.html','utf8'));
-        response.end();
+        fs.readFile('public/index.html', function(error,data) {
+                response.contentType("text/html");
+                response.send(data);
+        })
 
 /* sends an entire HTTP response to the client,                                                                                                                                     
  including headers and content,                                                                                                                                                     
