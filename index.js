@@ -1,6 +1,7 @@
 var express = require('express')
 var app = express()
 var fs=require('fs');
+var buffer= new Buffer(5024)
 
 app.set('port', (process.env.PORT || 8080))
 //app.use(express.static(__dirname + '/public'))
