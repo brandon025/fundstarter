@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express()
-
+var fs=require('fs');
 
 app.set('port', (process.env.PORT || 8080))
 //app.use(express.static(__dirname + '/public'))
@@ -8,7 +8,10 @@ app.set('port', (process.env.PORT || 8080))
 //__dirname returns the directory that the currently executing script is in.
 
 app.get('/', function(request, response) {
-    response.sendFile('public/index.html',{root:__dirname})
+    // response.sendFile('public/index.html',{root:__dirname})
+        response.set('content-type','text/html');
+        response.send(fs.readFileSync('public/index.html','utf8'));
+        response.end();
 
 /* sends an entire HTTP response to the client,                                                                                                                                     
  including headers and content,                                                                                                                                                     
