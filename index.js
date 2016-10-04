@@ -25,6 +25,7 @@ app.get('/', function(request, response) {
                             if (error){
                                 console.log(error);
                             }
+                        })
         })
 })
 })
