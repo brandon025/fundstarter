@@ -21,6 +21,10 @@ app.get('/', function(request, response) {
                 }
                         response.contentType("text/html");
                         response.send(buffer.slice(0, bytes).toString());
+                        fs.close(data, function(error){
+                            if (error){
+                                console.log(error);
+                            }
         })
 })
 })
