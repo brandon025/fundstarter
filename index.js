@@ -4,7 +4,7 @@ var fs = require('fs');
 
 app.set('port', (process.env.PORT || 8080))
 
-fs.readFile('public/index.html', function (err, html)
+fs.readFile('public/index.html', function (err, html){
             if (err){
                 throw err;
             }
