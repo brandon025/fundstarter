@@ -8,10 +8,10 @@ app.set('port', (process.env.PORT || 8080))
 
 //__dirname returns the directory that the currently executing script is in.
 
-app.get('/', function(request, response) {
     var data = fs.readFileSync('public/index.html');
     console.log(data.toString());
     console.log("Program Ended")
+app.get('/', function(request, response) {
 
 /* sends an entire HTTP response to the client,                                                                                                                                     
  including headers and content,                                                                                                                                                     
