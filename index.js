@@ -9,16 +9,19 @@ app.set('port', (process.env.PORT || 8080))
 
 app.get('/', function(request, response) {
     // response.sendFile('public/index.html',{root:__dirname})
-        fs.readFile('public/index.html', function(error,data) {
-                response.contentType("text/html");
-                response.send(data);
+        fs.open('public/index.html', 'r+', function(err, data) {
+                if (err){
+                        return console.error(err);
+                }
+        console.log("Successful reading");
+        fs.read(data, buffer, 0, buffer.length, 0, function(error, bytes){
+                if (error){
+                        console.log(error);
+                }
+                        response.contentType("text/html");
+                        response.send(buffer.slice(0, bytes).toString());
         })
-
-/* sends an entire HTTP response to the client,                                                                                                                                     
- including headers and content,                                                                                                                                                     
- which is why you can only call once*/
-
-
+})
 })
 
 app.listen(app.get('port'), function() {
